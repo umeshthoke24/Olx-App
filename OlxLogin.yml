@@ -1,9 +1,4 @@
 spring:
-  data:
-    mongodb:
-      database: olx_user
-      host: localhost
-      port: 27017
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     password: root
