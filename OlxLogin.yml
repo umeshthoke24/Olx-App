@@ -1,4 +1,32 @@
-data:
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      default-zone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  instance:
+    prefer-ip-address: true
+    hostname: localhost
+
+ 
+ 
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+  zipkin:
+    tracing:
+      endpoint: http://localhost:9411     
+server:
+  port: 1010
+spring:
+  application:
+    name: OLX-Login
+  config:
+    import:
+    - configserver:http://localhost:8888
+ 
+  data:
     mongodb:
       database: olx_user
       host: localhost
@@ -14,3 +42,5 @@ data:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
+springdoc:
+  show-actuator: 'TRUE'
