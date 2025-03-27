@@ -10,3 +10,8 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
+  data:
+    mongodb:
+      database: olx_user
+      host: localhost
+      port: 27017
