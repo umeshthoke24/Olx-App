@@ -1,50 +1,8 @@
-server:
-  port: 9082
 
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-  health:
-    circuitbreakers:
-      enabled: true
-  endpoint:
-    health:
-      show-details: always
-  tracing:
-    sampling:
-      probability: 1.0
-  zipkin:
-    tracing:
-      endpoint: http://localhost:9411
- 
-resilience4j:
-  circuitbreaker:
-    instances:
-      AUTH_TOKEN_VALIDATION:
-        registerHealthIndicator: true
-        slidingWindowSize: 10
-        minimumNumberOfCalls: 5
-        permittedNumberOfCallsInHalfOpenState: 3
-        automaticTransitionFromOpenToHalfOpenEnabled: true
-        waitDurationInOpenState: 5s
-        failureRateThreshold: 50
-        eventConsumerBufferSize: 10
- 
-eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      default-zone: http://${eureka.instance.hostname}:${server.port}/eureka/
-  instance:
-    prefer-ip-address: true
-    hostname: localhost
+
 
 spring:
-  application:
-    name: OLX-Advertise
+ 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     password: root
@@ -56,5 +14,3 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
-springdoc:
-  show-actuator: 'TRUE'
